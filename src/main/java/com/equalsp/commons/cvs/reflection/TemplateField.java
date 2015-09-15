@@ -10,6 +10,7 @@ import com.equalsp.commons.cvs.annotation.Template;
 import com.equalsp.commons.cvs.annotation.Transform;
 import com.equalsp.commons.cvs.annotation.Validation;
 import com.equalsp.commons.cvs.validator.StaticValidator;
+import com.equalsp.commons.cvs.validator.TransformValue;
 import com.equalsp.commons.cvs.validator.ValidationsEnum;
 import com.equalsp.commons.cvs.validator.Validator;
 
@@ -92,10 +93,19 @@ public class TemplateField implements Comparable<TemplateField>{
 	}
 
 	private Object transformValue(String value) {
+		TransformValue transform = new StaticValuesTransform(this.field);
 		if(tranformAnno != null){
-			
+			try {
+				transform = (TransformValue)tranformAnno.klass().newInstance();
+			}catch(ClassCastException e){
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
 		}
-		return null;
+		return transform.transform(value);
 	}
 
 	private void validateField(String value) throws ValidateException {
