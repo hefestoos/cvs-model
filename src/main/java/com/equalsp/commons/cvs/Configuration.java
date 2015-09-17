@@ -33,6 +33,11 @@ public class Configuration {
 		return this;
 	}
 	
+	public Configuration forFile(File file){
+		this.file = file;
+		return this;
+	}
+	
 	public Configuration forFile(String filePath) throws ConfigurationException{
 		try{
 			URL url = Thread.currentThread().getContextClassLoader().getResource(filePath);
