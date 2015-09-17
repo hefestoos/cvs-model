@@ -21,7 +21,7 @@ public class TemplateClass {
 		ArrayList<TemplateField> annotedField = new ArrayList<TemplateField>();
 		ArrayList<TemplateField> allField = new ArrayList<TemplateField>();
 		for (Field field : klass.getDeclaredFields()) {
-			if(!field.isAnnotationPresent(Column.class)){
+			if(field.isAnnotationPresent(Column.class)){
 				annotedField.add(new TemplateField(field));
 			}
 			allField.add(new TemplateField(field));
