@@ -92,7 +92,7 @@ public class TemplateField implements Comparable<TemplateField>{
 		return result;
 	}
 
-	private Object transformValue(String value) {
+	private Object transformValue(String value) throws Exception {
 		TransformValue transform = new StaticValuesTransform(this.field);
 		if(tranformAnno != null){
 			try {

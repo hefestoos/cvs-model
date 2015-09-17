@@ -46,8 +46,8 @@ public class Configuration {
 		}
 	}
 	
-	public Configuration template(Class<?> templateClass){
-		this.setTemplate(templateClass);
+	public Configuration template(Class<?> template){
+		this.template = template;
 		return this;
 	}
 	
@@ -91,10 +91,6 @@ public class Configuration {
 
 	public Class<?> getTemplate() {
 		return template;
-	}
-
-	public void setTemplate(Class<?> template) {
-		this.template = template;
 	}
 
 	public CSVFormat getFormat() {
