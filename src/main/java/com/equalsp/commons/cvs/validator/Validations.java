@@ -1,12 +1,12 @@
 package com.equalsp.commons.cvs.validator;
 
-public enum ValidationsEnum {
+public enum Validations {
 
 	NOTNULL {
 		@Override
-		Boolean validate(String value) {
+		boolean validate(String value) {
 			// TODO Auto-generated method stub
-			return null;
+			return true;
 		}
 
 		@Override
@@ -17,9 +17,9 @@ public enum ValidationsEnum {
 
 	}, NUMBER {
 		@Override
-		Boolean validate(String value) {
+		boolean validate(String value) {
 			// TODO Auto-generated method stub
-			return null;
+			return true;
 		}
 
 		@Override
@@ -30,9 +30,9 @@ public enum ValidationsEnum {
 
 	}, EMAIL {
 		@Override
-		Boolean validate(String value) {
+		boolean validate(String value) {
 			// TODO Auto-generated method stub
-			return null;
+			return true;
 		}
 
 		@Override
@@ -44,8 +44,8 @@ public enum ValidationsEnum {
 	}, 
 	CUSTOM {
 		@Override
-		Boolean validate(String value) {
-			return null;
+		boolean validate(String value) {
+			return true;
 		}
 
 		@Override
@@ -60,6 +60,6 @@ public enum ValidationsEnum {
 		return "The field "+fieldName+" not is valid for "+this.id();
 	}
 	
-	abstract Boolean validate(String value);
+	abstract boolean validate(String value);
 	
 }

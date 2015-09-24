@@ -3,9 +3,9 @@ package com.equalsp.commons.cvs.validator;
 
 public class StaticValidator implements Validator{
 	
-	ValidationsEnum validation;
+	Validations validation;
 	
-	public StaticValidator(ValidationsEnum validation){
+	public StaticValidator(Validations validation){
 		this.validation = validation;
 	}
 
@@ -17,7 +17,7 @@ public class StaticValidator implements Validator{
 		return validation.message(fieldName);
 	}
 
-	public Boolean validate(String value) {
+	public boolean validate(String value) {
 		return validation.validate(value);
 	}
 	

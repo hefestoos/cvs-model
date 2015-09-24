@@ -11,7 +11,7 @@ import com.equalsp.commons.cvs.annotation.Transform;
 import com.equalsp.commons.cvs.annotation.Validation;
 import com.equalsp.commons.cvs.validator.StaticValidator;
 import com.equalsp.commons.cvs.validator.TransformValue;
-import com.equalsp.commons.cvs.validator.ValidationsEnum;
+import com.equalsp.commons.cvs.validator.Validations;
 import com.equalsp.commons.cvs.validator.Validator;
 
 public class TemplateField implements Comparable<TemplateField>{
@@ -36,7 +36,7 @@ public class TemplateField implements Comparable<TemplateField>{
 			if(a instanceof Validation){
 				this.validationAnno = (Validation) a;
 			}
-			if(a instanceof Template){
+			if(a instanceof Transform){
 				this.tranformAnno = (Transform) a;
 			}
 		}
@@ -111,11 +111,11 @@ public class TemplateField implements Comparable<TemplateField>{
 	private void validateField(String value) throws ValidateException {
 		if(validationAnno != null){
 			Validator validator;
-			for (ValidationsEnum v : validationAnno.types()) {
+			for (Validations v : validationAnno.types()) {
 	
 				validator = new StaticValidator(v);
 				
-				if(v.equals(ValidationsEnum.CUSTOM)){
+				if(v.equals(Validations.CUSTOM)){
 					Class<?> validateClass = validationAnno.validatorClass();
 					if(validateClass == null || validateClass.equals(StaticValidator.class)){
 						throw new ValidateException("Validation CUSTOM should define classValidation.");
@@ -130,7 +130,6 @@ public class TemplateField implements Comparable<TemplateField>{
 						throw new ValidateException("validateClass in @Validate deve implementar Validator.");
 					}
 				}
-				
 				if(validator.validate(value)){
 					validateErrors.put(validator.name(), validator.message(this.field.getName()) );
 				}

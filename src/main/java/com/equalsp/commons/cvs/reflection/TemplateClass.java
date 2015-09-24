@@ -2,6 +2,7 @@ package com.equalsp.commons.cvs.reflection;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.csv.CSVRecord;
@@ -21,14 +22,16 @@ public class TemplateClass {
 		ArrayList<TemplateField> annotedField = new ArrayList<TemplateField>();
 		ArrayList<TemplateField> allField = new ArrayList<TemplateField>();
 		for (Field field : klass.getDeclaredFields()) {
-			if(!field.isAnnotationPresent(Column.class)){
+			if(field.isAnnotationPresent(Column.class)){
 				annotedField.add(new TemplateField(field));
 			}
 			allField.add(new TemplateField(field));
 		}
 		
 		templateFields = annotedField.isEmpty() ? allField : annotedField;
-			
+		
+		Collections.sort(templateFields);
+		
 	}
 
 	public List<TemplateField> getFields() {

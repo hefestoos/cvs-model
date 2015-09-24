@@ -4,12 +4,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import com.equalsp.commons.cvs.validator.StaticValidator;
-import com.equalsp.commons.cvs.validator.ValidationsEnum;
+import com.equalsp.commons.cvs.validator.Validations;
 
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Validation {
 	
-	ValidationsEnum[] types();
+	Validations[] types();
 	
 	Class<?> validatorClass() default StaticValidator.class;
 	

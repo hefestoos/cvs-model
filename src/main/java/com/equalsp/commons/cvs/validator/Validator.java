@@ -6,6 +6,6 @@ public interface Validator {
 	
 	String message(String string);
 
-	Boolean validate(String value);
+	boolean validate(String value);
 
 }
