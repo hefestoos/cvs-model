@@ -4,7 +4,7 @@
 	<groupId>com.equalsp.commons</groupId>
 	<artifactId>cvs</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<properties>
 		<groovy-eclipse-compiler.version>2.9.1-01</groovy-eclipse-compiler.version>
 		<groovy-eclipse-batch.version>2.3.7-01</groovy-eclipse-batch.version>
@@ -16,6 +16,33 @@
 		<cglib.version>3.1</cglib.version>
 	</properties>
 
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.codehaus.groovy</groupId>
+				<artifactId>groovy-eclipse-compiler</artifactId>
+				<version>2.9.1-01</version>
+				<extensions>true</extensions>
+			</plugin>
+			
+			<!-- Run tests in files with **Spec.* in name. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.16</version>
+				<configuration>
+					<includes>
+						<include>**/*Spec.*</include>
+					</includes>
+					<forkCount>1</forkCount>
+       				<argLine>-Xms512m -Xmx1024m -XX:MaxPermSize=512m</argLine>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
 	<dependencies>
 		<!-- Remover, não tem sido usado. -->
 		<dependency>
@@ -23,26 +50,26 @@
 			<artifactId>reflections</artifactId>
 			<version>0.9.9-RC1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-csv</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
-		<!-- Dependencias de testes  -->
+
+		<!-- Dependencias de testes -->
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-eclipse-compiler</artifactId>
 			<version>${groovy-eclipse-compiler.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-eclipse-batch</artifactId>
 			<version>${groovy-eclipse-batch.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
@@ -62,28 +89,28 @@
 		</dependency>
 
 		<dependency>
-	      <groupId>org.powermock</groupId>
-	      <artifactId>powermock-module-junit4</artifactId>
-	      <version>${powermock.version}</version>
-	   </dependency>
-	
-       <dependency>
-           <groupId>org.powermock</groupId>
-           <artifactId>powermock-api-mockito</artifactId>
-           <version>${powermock.version}</version>
-       </dependency>
-	
-	   <dependency>
-	        <groupId>org.powermock</groupId>
-	        <artifactId>powermock-module-junit4-rule</artifactId>
-	        <version>${powermock.version}</version>
-	    </dependency>
-	
-	    <dependency>
-	        <groupId>org.powermock</groupId>
-	        <artifactId>powermock-classloading-xstream</artifactId>
-	        <version>${powermock.version}</version>
-	    </dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>${powermock.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>${powermock.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4-rule</artifactId>
+			<version>${powermock.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-classloading-xstream</artifactId>
+			<version>${powermock.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>asm</groupId>

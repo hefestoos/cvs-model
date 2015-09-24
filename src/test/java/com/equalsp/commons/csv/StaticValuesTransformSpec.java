@@ -14,7 +14,7 @@ public class StaticValuesTransformSpec {
 	private static StaticValuesTransform transform; 
 
 	public static void loadField() throws Exception{
-		StaticClassWithStaticTypes model = new StaticClassWithStaticTypes();
+		StaticClass model = new StaticClass();
 		Field field = model.getClass().getDeclaredField(fieldName);
 		transform = new StaticValuesTransform(field);
 	}

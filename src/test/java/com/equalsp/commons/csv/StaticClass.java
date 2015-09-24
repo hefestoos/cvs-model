@@ -1,6 +1,6 @@
 package com.equalsp.commons.csv;
 
-public class StaticClassWithStaticTypes {
+public class StaticClass {
 
 	private int number;
 
